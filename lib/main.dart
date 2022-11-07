@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:bluetest/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
@@ -14,6 +13,7 @@ class FlutterBlueApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       color: Colors.lightBlue,
       home: StreamBuilder<BluetoothState>(
           stream: FlutterBlue.instance.state,
@@ -78,7 +78,7 @@ class FindDevicesScreen extends StatelessWidget {
                     .asyncMap((_) => FlutterBlue.instance.connectedDevices),
                 initialData: const [],
                 builder: (c, snapshot) {
-                  return snapshot.data==null?const CircularProgressIndicator(): Column(
+                  return  Column(
                  
                   children: snapshot.data!
                       .map((d) {
